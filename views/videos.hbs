@@ -1,2 +1,12 @@
 <h1>Videos</h1>
 <form action="/videos" method="post"></form>
+
+{{#each videos}}
+
+    <video id="videoPlayer" width="70%" controls muted="muted">
+    <source src="{{image}}" type="video/mp4">
+    </video>
+    <label for="">{{title}}</label>
+    <label for="">{{description}}</label>
+    <label for="">{{owner.userName}}</label>
+{{/each}}

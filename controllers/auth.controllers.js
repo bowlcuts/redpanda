@@ -92,7 +92,15 @@ const profileGetController = (req, res, next) => {
 };
 
 const videoGetController = (req, res, next) => {
-  res.render("videos.hbs");
+  console.log("hey");
+
+  Video.find({}).populate('owner')
+    .then((foundVideos) => {
+      console.log(foundVideos[0].image);
+      res.render("videos.hbs", { videos: foundVideos });
+    })
+    .catch((err) => console.log(err));
+  
 };
 
 const uploadGetController = (req, res, next) => {
