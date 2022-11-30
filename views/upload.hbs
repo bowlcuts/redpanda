@@ -1,0 +1,23 @@
+<h1>Upload a video</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    {{!-- <div class="form-group">
+        <label>Select video</label>
+        <input type="file" name="video" accept="video/*" class="form-control-file" required>
+        
+    </div> --}}
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="1"></textarea>
+    </div>
+    <div>
+        <label>Thumbnail</label>
+        <input type="file" name="myVideo" id="myVideo">
+        
+    </div>
+    <button type="submit">Submit</button>
+</form>
