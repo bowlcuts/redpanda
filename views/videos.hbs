@@ -1,7 +1,7 @@
 <h1>Videos</h1>
 <form action="/videos" method="post"></form>
 
-{{#each videos}}
+{{!-- {{#each videos}}
 
     <video id="videoPlayer" width="70%" controls muted="muted">
     <source src="{{image}}" type="video/mp4">
@@ -9,4 +9,29 @@
     <label for="">{{title}}</label>
     <label for="">{{description}}</label>
     <label for="">{{owner.userName}}</label>
-{{/each}}
+    
+{{/each}} --}}
+
+<div class="videos">
+    <section class="video-section">
+        <article class="video-container">
+            <a href="#" class="thumbnail">
+                <img src="http://unsplash.it/250/150?gravity=center" alt="" class="thumbnail-image">
+            </a>
+            <div class="video-bottom-section">
+                <a href="#">
+                    <img src="http://unsplash.it/36/36?gravity=center" alt="" class="channel-icon">
+                </a>
+                <div class="video-details">
+                    <a href="#" class="video-title">Video Title</a>
+                    <a href="#" class="video-channel-name">Channel Name</a>
+                    <div class="video-metadata">
+                        <span>12K views</span>
+                        •
+                        <span>1 week ago</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>

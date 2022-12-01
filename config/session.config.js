@@ -34,7 +34,7 @@ module.exports = (app) => {
       },
       //  sets up the store.
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/redpanda-v3",
+        mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/redpanda",
 
         // ttl => time to live
         // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day

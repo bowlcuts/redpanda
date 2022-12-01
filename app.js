@@ -10,11 +10,6 @@ const app = express();
 require("./config/session.config")(app);
 require("./config")(app);
 
-const capitalize = require("./utils/capitalize");
-const projectName = "redpanda-v3";
-
-app.locals.appTitle = `${capitalize(projectName)} created with sadness`;
-
 const indexRoutes = require("./routes/index.routes");
 
 app.use("/", indexRoutes);
