@@ -11,7 +11,8 @@ const videoSchema = new Schema(
       },
       image: String,
       thumbnail: String,
-      date: String
+      date: String,
+      reviews: [{type: Schema.Types.ObjectId, ref: "Review"}]
     }
   );
 

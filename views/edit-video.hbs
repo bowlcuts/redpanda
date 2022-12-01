@@ -1,0 +1,24 @@
+<h1>Edit Video</h1>
+
+<form action="/videos/{{_id}}/edit-video" method="post">
+    <div>
+        <label for="title">Edit Title</label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="description">Edit Description</label>
+        <textarea name="description" id="description" cols="30" rows="1"></textarea>
+    </div>
+    <div>
+        <label>Video file</label>
+        <input type="file" name="myVideo" id="myVideo">
+    </div>
+    <div>
+        <label>Thumbnail</label>
+        <input type="file" name="thumbnail" id="thumbnail"> 
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+
+        

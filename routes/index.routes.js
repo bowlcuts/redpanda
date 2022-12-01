@@ -10,9 +10,15 @@ const {
   loginPostController,
   uploadGetController,
   uploadPostController,
+  videoDeletePost,
   videoGetController,
   homeVidGetController,
-  videoPlayerGetController
+  videoPlayerGetController,
+  profileGetController,
+  contactGetController,
+  videoDeletePostController,
+  videoEditGetController,
+  videoEditPostController
 } = require("../controllers/auth.controllers");
 
 const {
@@ -49,9 +55,20 @@ router.post(
   uploadPostController
 );
 
+router.post('/videos/:id/delete', isOwner, videoDeletePostController);
+
+router.get('/videos/:id/edit-video', isOwner, videoEditGetController);
+
+router.post('/videos/:id/edit-video', isOwner, videoEditPostController);
+
 router.get("/videos", isLoggedIn, videoGetController);
 
 router.get("/video-player/:id", isLoggedIn, videoPlayerGetController);
+
+router.get("/profile", isLoggedIn, profileGetController);
+
+router.get("/contact", contactGetController);
+
 
 router.get("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy(() => {

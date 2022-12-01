@@ -125,7 +125,8 @@ const uploadPostController = (req, res, next) => {
     owner: req.session.user._id,
     image: req.files.myVideo[0].path,
     thumbnail: req.files.thumbnail[0].path,
-    date: currentDate.toLocaleString("en-US", options)
+    date: currentDate.toLocaleString("en-US", options),
+    reviews: req.body.reviews
   })
     .then((uploadedVideo) => {
       console.log(uploadedVideo);
@@ -147,9 +148,58 @@ const videoPlayerGetController = (req, res, next) => {
   
 };
 
-// const videoPlayerPostController = (req, res, next) => {
-//   Video.findById(req.params.id)
-// }
+const videoDeletePostController = (req, res, next) => {
+  console.log('id of Video', req.params.id)
+  Video.findById(req.params.id)
+  .then((foundVideo) => {
+      foundVideo.delete()
+      console.log('Video was deleted', foundVideo);
+      
+  })
+  .catch(err => console.log('error while deleting: ', err));
+
+};
+
+const videoEditGetController = (req, res, next) => {
+  Video.findById(req.params.id)
+  .then((foundVideo) => {
+      res.render('edit-video.hbs', foundVideo)
+  })
+  .catch((err) => {
+      console.log(err)
+  });
+};
+
+const videoEditPostController = (req, res, next) => {
+  Video.findByIdAndUpdate(req.params.id, {
+    title: req.body.title,
+    description: req.body.description,
+    image: req.files.myVideo[0].path,
+    thumbnail: req.files.thumbnail[0].path
+},
+{new: true}
+)
+.then((updatedVideo) => {
+    console.log("Changed Video:", updatedVideo)
+    res.redirect('/videos')
+})
+.catch((err) => console.log(err))
+};
+
+const profileGetController = (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((foundUser) => {
+    console.log(foundUser)
+    res.render('profile.hbs', foundUser);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+};
+
+const contactGetController = (req, res, next) => {
+  res.render('contact.hbs')
+};
 
 module.exports = {
   signupGetController,
@@ -160,5 +210,10 @@ module.exports = {
   uploadGetController,
   uploadPostController,
   videoGetController,
-  videoPlayerGetController
+  videoDeletePostController,
+  videoEditGetController,
+  videoEditPostController,
+  videoPlayerGetController,
+  profileGetController,
+  contactGetController
 };

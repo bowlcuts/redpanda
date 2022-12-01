@@ -1,5 +1,13 @@
 <h1>Videos</h1>
+{{#if errorMessage}}
+<p style="color: red;">{{errorMessage}}</p>
+<a href="/videos">Go back</a>
+{{/if}}
+
+
 <div class="videos-page">
+
+
 {{#each videos}}
 
     <div class="videos">
@@ -25,5 +33,17 @@
             </article>
         </section>
     </div>
+    <div>
+        {{#unless isLoggedIn}}
+            <form action="/videos/{{_id}}/edit-video">
+                <button value="edit">Edit</button>
+            </form>
+            <form action="/videos/{{_id}}/delete" method="post">
+                <button value="delete">Delete</button>
+            </form>
+
+        {{/unless}}
+    </div>
+
 {{/each}}
 </div>

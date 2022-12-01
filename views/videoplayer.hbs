@@ -1,5 +1,16 @@
 <h1>test</h1>
-
-    <video id="videoPlayer" width="70%" height="80%" controls muted="muted" autoplay>
-    <source src="{{image}}" type="video/mp4">
-    </video>
+    <div>
+        <video id="videoPlayer" width="70%" height="80%" controls muted="muted" autoplay>
+        <source src="{{image}}" type="video/mp4">
+        </video>
+    </div>
+    <div>
+        <h5>{{description}}</h5>
+    </div>
+    <div>
+        <form action="/reviews/{{_id}}/add-reviews" method="post">
+            <label for="comment">Comment</label>
+            <input type="text" name="comment" id="comment">
+            <button type="submit">Post</button>
+        </form>
+    </div>
