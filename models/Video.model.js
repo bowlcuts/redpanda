@@ -9,7 +9,9 @@ const videoSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: "User",
       },
-      image: String
+      image: String,
+      thumbnail: String,
+      date: String
     }
   );
 

@@ -11,7 +11,8 @@ const {
   uploadGetController,
   uploadPostController,
   videoGetController,
-  profileGetController,
+  homeVidGetController,
+  videoPlayerGetController
 } = require("../controllers/auth.controllers");
 
 const {
@@ -33,18 +34,24 @@ router.post("/signup", isAnon, signupPostController);
 router.get("/login", isAnon, loginGetController);
 
 router.post("/login", isAnon, loginPostController);
-router.get("/testing", isLoggedIn, profileGetController);
+
+router.get("/home", isLoggedIn, homeVidGetController);
 
 router.get("/upload", isLoggedIn, uploadGetController);
 
 router.post(
   "/upload",
   isLoggedIn,
-  fileUploader.single("myVideo"),
+  fileUploader.fields([
+    { name: 'myVideo', maxCount: 1 },
+    { name: 'thumbnail', maxCount: 1 }
+]),
   uploadPostController
 );
 
 router.get("/videos", isLoggedIn, videoGetController);
+
+router.get("/video-player/:id", isLoggedIn, videoPlayerGetController);
 
 router.get("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy(() => {

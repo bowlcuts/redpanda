@@ -73,14 +73,14 @@ const loginPostController = (req, res, next) => {
 
       req.session.user = foundUser;
       console.log(req.session);
-      res.redirect("/");
+      res.redirect("/home");
     })
     .catch((err) => {
       console.log(err);
       res.send(err);
     });
 };
-const profileGetController = (req, res, next) => {
+const homeVidGetController = (req, res, next) => {
   console.log("hey");
 
   Video.find({})
@@ -96,7 +96,7 @@ const videoGetController = (req, res, next) => {
 
   Video.find({}).populate('owner')
     .then((foundVideos) => {
-      console.log(foundVideos[0].image);
+      console.log(foundVideos);
       res.render("videos.hbs", { videos: foundVideos });
     })
     .catch((err) => console.log(err));
@@ -108,12 +108,24 @@ const uploadGetController = (req, res, next) => {
 };
 
 const uploadPostController = (req, res, next) => {
-  console.log(req.file.path);
+  console.log(req.files);
+
+  let currentDate = new Date();
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  console.log(currentDate.toLocaleString("en-US", options));
+  
   Video.create({
     title: req.body.title,
     description: req.body.description,
     owner: req.session.user._id,
-    image: req.file.path,
+    image: req.files.myVideo[0].path,
+    thumbnail: req.files.thumbnail[0].path,
+    date: currentDate.toLocaleString("en-US", options)
   })
     .then((uploadedVideo) => {
       console.log(uploadedVideo);
@@ -123,13 +135,30 @@ const uploadPostController = (req, res, next) => {
     .catch((err) => console.log(`Error while trying to upload video: ${err}`));
 };
 
+const videoPlayerGetController = (req, res, next) => {
+  Video.findById(req.params.id)
+  .then((foundVideo) => {
+    console.log(foundVideo)
+    res.render('videoplayer.hbs', foundVideo);
+  })
+  .catch((err) => {
+    console.log(err)
+  });
+  
+};
+
+// const videoPlayerPostController = (req, res, next) => {
+//   Video.findById(req.params.id)
+// }
+
 module.exports = {
   signupGetController,
   signupPostController,
   loginGetController,
   loginPostController,
-  profileGetController,
+  homeVidGetController,
   uploadGetController,
   uploadPostController,
   videoGetController,
+  videoPlayerGetController
 };
