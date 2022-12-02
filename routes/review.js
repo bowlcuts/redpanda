@@ -8,7 +8,7 @@ const { isLoggedIn, isNotOwner  }= require('../middleware/auth.middlewares');
 const Video = require('../models/Video.model');
 
 router.get('/:id/add-reviews', isLoggedIn, isNotOwner,  (req, res, next) => {
-    res.render('add-review.hbs', {_id: req.params.id})
+    res.render('videos.hbs', {_id: req.params.id})
 });
 
 router.post('/:id/add-reviews', isLoggedIn, isNotOwner, (req, res, next) => {
@@ -24,7 +24,7 @@ router.post('/:id/add-reviews', isLoggedIn, isNotOwner, (req, res, next) => {
             )
             .then((updatedVideo) => {
                 console.log('WTIH NEW REVIEW', updatedVideo)
-                res.redirect('/videos')
+                res.redirect(`/videos-player/${req.params.id}`)
             })
             .catch((err) => {
                 console.log(err)

@@ -8,7 +8,7 @@ const signupGetController = (req, res, next) => {
 };
 
 const signupPostController = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   if (!req.body.email || !req.body.password || !req.body.userName) {
     res.render("signup", { errorMessage: "sorry you forgot something" });
     return;
@@ -38,12 +38,12 @@ const signupPostController = (req, res, next) => {
 };
 
 const loginGetController = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   res.render("login.hbs");
 };
 
 const loginPostController = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   const { email, password } = req.body;
 
@@ -54,7 +54,7 @@ const loginPostController = (req, res, next) => {
 
   User.findOne({ email })
     .then((foundUser) => {
-      console.log(foundUser);
+      // console.log(foundUser);
       if (!foundUser) {
         // res.send('Sorry user does not exist');
         res.render("login.hbs", { errorMessage: "Sorry user does not exist" });
@@ -72,31 +72,31 @@ const loginPostController = (req, res, next) => {
       }
 
       req.session.user = foundUser;
-      console.log(req.session);
+      // console.log(req.session);
       res.redirect("/home");
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       res.send(err);
     });
 };
 const homeVidGetController = (req, res, next) => {
-  console.log("hey");
+  // console.log("hey");
 
   Video.find({})
     .then((foundVideos) => {
-      console.log(foundVideos[0].image);
+      // console.log(foundVideos[0].image);
       res.render("index.hbs", { video: foundVideos[0].image });
     })
     .catch((err) => console.log(err));
 };
 
 const videoGetController = (req, res, next) => {
-  console.log("hey");
+  // console.log("hey");
 
   Video.find({}).populate('owner')
     .then((foundVideos) => {
-      console.log(foundVideos);
+      // console.log(foundVideos);
       res.render("videos.hbs", { videos: foundVideos });
     })
     .catch((err) => console.log(err));
@@ -108,7 +108,7 @@ const uploadGetController = (req, res, next) => {
 };
 
 const uploadPostController = (req, res, next) => {
-  console.log(req.files);
+  // console.log(req.files);
 
   let currentDate = new Date();
   const options = {
@@ -117,7 +117,7 @@ const uploadPostController = (req, res, next) => {
     month: "long",
     day: "numeric",
   };
-  console.log(currentDate.toLocaleString("en-US", options));
+  // console.log(currentDate.toLocaleString("en-US", options));
   
   Video.create({
     title: req.body.title,
@@ -139,7 +139,7 @@ const uploadPostController = (req, res, next) => {
 const videoPlayerGetController = (req, res, next) => {
   Video.findById(req.params.id)
   .then((foundVideo) => {
-    console.log(foundVideo)
+    // console.log(foundVideo)
     res.render('videoplayer.hbs', foundVideo);
   })
   .catch((err) => {
@@ -149,12 +149,12 @@ const videoPlayerGetController = (req, res, next) => {
 };
 
 const videoDeletePostController = (req, res, next) => {
-  console.log('id of Video', req.params.id)
+  // console.log('id of Video', req.params.id)
   Video.findById(req.params.id)
   .then((foundVideo) => {
       foundVideo.delete()
-      console.log('Video was deleted', foundVideo);
-      
+      // console.log('Video was deleted', foundVideo);
+      res.redirect('/videos')
   })
   .catch(err => console.log('error while deleting: ', err));
 
@@ -174,13 +174,13 @@ const videoEditPostController = (req, res, next) => {
   Video.findByIdAndUpdate(req.params.id, {
     title: req.body.title,
     description: req.body.description,
-    image: req.files.myVideo[0].path,
-    thumbnail: req.files.thumbnail[0].path
+    // image: req.files.myVideo[0].path,
+    // thumbnail: req.files.thumbnail[0].path
 },
 {new: true}
 )
 .then((updatedVideo) => {
-    console.log("Changed Video:", updatedVideo)
+    // console.log("Changed Video:", updatedVideo)
     res.redirect('/videos')
 })
 .catch((err) => console.log(err))
@@ -189,7 +189,7 @@ const videoEditPostController = (req, res, next) => {
 const profileGetController = (req, res, next) => {
   User.findById(req.session.user._id)
   .then((foundUser) => {
-    console.log(foundUser)
+    // console.log(foundUser)
     res.render('profile.hbs', foundUser);
   })
   .catch((err) => {

@@ -11,8 +11,11 @@ require("./config/session.config")(app);
 require("./config")(app);
 
 const indexRoutes = require("./routes/index.routes");
+const reviewRoutes = require("./routes/review");
 
 app.use("/", indexRoutes);
+app.use("/video-player", reviewRoutes);
+
 
 require("./error-handling")(app);
 

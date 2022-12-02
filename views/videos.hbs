@@ -34,7 +34,7 @@
         </section>
     </div>
     <div>
-        {{#unless isLoggedIn}}
+
             <form action="/videos/{{_id}}/edit-video">
                 <button value="edit">Edit</button>
             </form>
@@ -42,7 +42,7 @@
                 <button value="delete">Delete</button>
             </form>
 
-        {{/unless}}
+
     </div>
 
 {{/each}}
