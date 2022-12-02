@@ -1,4 +1,7 @@
-<h1>Upload a video</h1>
+<div class="uploads">
+
+
+<h1 class="upload-title">Upload a video</h1>
 
 <form action="/upload" method="post" enctype="multipart/form-data">
     {{!-- <div class="form-group">
@@ -7,22 +10,27 @@
         
     </div> --}}
     <div class="form-group">
-        <label for="title">Title</label>
+        <label class="group-label" for="title">Title</label>
         <input type="text" name="title" id="title">
     </div>
-    <div>
-        <label for="description">Description</label>
+    <div class="form-group">
+        <label class="group-label" for="description">Description</label>
         <textarea name="description" id="description" cols="30" rows="1"></textarea>
     </div>
-    <div>
-        <label>Video file</label>
+    <div class="form-group">
+        <label class="group-label">Video file</label>
         <input type="file" name="myVideo" id="myVideo">
         
     </div>
-     <div>
-        <label>Thumbnail</label>
+     <div class="form-group">
+        <label class="group-label">Thumbnail</label>
         <input type="file" name="thumbnail" id="thumbnail">
         
     </div>
+    <div class="form-group">
     <button type="submit">Submit</button>
+    </div>
+    
 </form>
+
+</div>

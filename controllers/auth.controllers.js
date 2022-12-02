@@ -112,9 +112,9 @@ const uploadPostController = (req, res, next) => {
 
   let currentDate = new Date();
   const options = {
-    weekday: "long",
+    // weekday: "long",
     year: "numeric",
-    month: "long",
+    month: "numeric",
     day: "numeric",
   };
   // console.log(currentDate.toLocaleString("en-US", options));

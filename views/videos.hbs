@@ -1,4 +1,4 @@
-<h1>Videos</h1>
+<h1 class="contact">Videos</h1>
 {{#if errorMessage}}
 <p style="color: red;">{{errorMessage}}</p>
 <a href="/videos">Go back</a>
@@ -12,6 +12,14 @@
 
     <div class="videos">
         <section class="video-section">
+            <div class="video-btn">
+                <form class="video-btn1" action="/videos/{{_id}}/edit-video">
+                    <button class="video-btn1" value="edit">Edit</button>
+                </form>
+                <form class="video-btn2" action="/videos/{{_id}}/delete" method="post">
+                    <button class="video-btn2" value="delete">Delete</button>
+                </form>
+            </div>
             <article class="video-container">
                 <a href="/video-player/{{_id}}" class="thumbnail" data-duration="12:24">
                     <img src="{{thumbnail}}" alt="" class="thumbnail-image">
@@ -31,19 +39,10 @@
                     </div>
                 </div>
             </article>
+
         </section>
     </div>
-    <div>
 
-            <form action="/videos/{{_id}}/edit-video">
-                <button value="edit">Edit</button>
-            </form>
-            <form action="/videos/{{_id}}/delete" method="post">
-                <button value="delete">Delete</button>
-            </form>
-
-
-    </div>
 
 {{/each}}
 </div>

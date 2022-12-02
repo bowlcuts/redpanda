@@ -1,23 +1,21 @@
-<h1>Log In</h1>
-<form action="/login" method="post">
+<body class="index">
+    
 
-    <div>
-        <label for="emailInput">E-mail</label>
-        
-    </div>
-    <div>
-        <input type="text" name="email" id="emailInput"/>
-    </div>
-    <div>
-        <label for="passwordInput">Password</label>
-    </div>
-    <div>
-        <input type="password" name="password" id="passwordInput"/>
-    </div>
+<div class="login-page">
+  <div class="form">
 
-    <button type="submit">Log In</button>
-</form>
+    <form class="login-form" action="/login" method="post">
+      
+      <input type="text" name="email" id="emailInput" placeholder="email"/>
+      <input type="password" name="password" id="passwordInput" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="/signup">Create an account</a></p>
+      <p class="message"><a href="/contact">Contact</a></p>
+    </form>
+  </div>
+</div>
 
 {{#if errorMessage}}
 <p style="color: red;">{{errorMessage}}</p>
 {{/if}}
+</body>
