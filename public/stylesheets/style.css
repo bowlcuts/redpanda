@@ -47,8 +47,8 @@ body {
   border-left: 0;
   border-right: 0;
   border-radius: 100%;
-  /* width: 4.2rem;
-  height: 4.2rem; */
+  width: 4.2rem;
+  height: 4.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
