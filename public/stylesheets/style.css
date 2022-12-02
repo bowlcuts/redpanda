@@ -2,7 +2,7 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
-  font-family: Roboto, Arial, Arial, Helvetica, sans-serif;
+  font-family: Montserrat, Arial, Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -242,24 +242,27 @@ body {
   justify-content: center;
   justify-content: space-between;
   margin: 2%;
+  color: white;
 }
 
 .video-btn1 {
   background-color: transparent;
   border: transparent;
+  color: white;
 }
 
 .video-btn2{
   background-color: transparent;
   border: transparent;
+  color: white;
 }
 
 .video-btn1:hover {
-  color: white;
+  color: #2e2e2e;
   cursor: pointer;
 }
 .video-btn2:hover {
-  color: white;
+  color: #2e2e2e;
   cursor:pointer;
 }
 
@@ -267,21 +270,98 @@ body {
   display: flex;
   align-items: flex-start;
   margin-top: 1rem;
+ 
 }
 
 .video-home-bottom-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin: 0;
+  color: white;
 }
 
 .description {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+}
+.description p {
+  margin: 0;
+}
+.description h5 {
+  margin: 0;
 }
 
 .description-item {
   margin: 0;
+}
+.ownerAndAvatar {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  
+}
+
+.comment-box  {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+  color: white;
+  background-color: transparent;
+}
+
+.comment-box input {
+  background-color: #2e2e2e;
+  border-color: white;
+  border: 2px solid rgb(227, 76, 38);
+  width: 48vw;
+  height: 2rem;
+  color: white;
+}
+.comment-box input:hover {
+  border: 2px solid white;
+  color: white;
+  transition: 0.5s;
+}
+
+.comment-box button {
+  background-color: #2e2e2e;
+  color: white;
+  border: transparent;
+  height: 2rem;
+  width: 4rem;
+}
+
+.comment-box button:hover {
+  background-color: white;
+  color: rgb(227, 76, 38);
+  cursor: pointer;
+  border: transparent;
+  height: 2rem;
+  width: 4rem;
+  transition: 0.5s;
+}
+
+.comments-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #2e2e2e;
+  border-color: white;
+  border: 2px solid rgb(227, 76, 38);
+  /* border-radius: 10%; */
+  color: rgb(227, 76, 38);
+  margin: auto;
+  width: 65vw;
+}
+
+.comments-section:hover {
+  border: 2px solid white;
+  color: white;
+  transition: 0.5s;
+  
 }
 
 .channel-icon {
@@ -308,7 +388,12 @@ body {
   font-weight: bold;
   margin-bottom: .1rem;
   text-decoration: none;
-  color: black;
+  color: white;
+}
+
+.video-title:hover {
+  color: #2e2e2e;
+  transition: 0.5s;
 }
 
 .video-channel-name {
@@ -318,11 +403,11 @@ body {
 }
 
 .video-channel-name:hover {
-  color: rgb(255, 255, 255);
+  color: #2e2e2e;
 }
 .video-channel-name,
 .video-metadata {
-  color: rgb(0, 0, 0);
+  color: white;
 }
 
 footer {

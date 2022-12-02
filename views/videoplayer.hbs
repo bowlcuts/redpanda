@@ -6,12 +6,16 @@
     </div>
 
     <div class="video-home-bottom-section">
-        <a href="#">
-            <img src="http://unsplash.it/250/150?gravity=center" alt="" class="channel-icon">
-        </a>
+     
         <div class="video-home-details">
+       <div class="ownerAndAvatar"
+            <a href="#">
+            <img src="http://unsplash.it/250/150?gravity=center" alt="" class="channel-icon">
+            </a>           
+            <a href="#" class="video-channel-name">{{owner.userName}}</a>    
+            </div>
             <a href="/video-player/{{_id}}" class="video-title">{{title}}</a>
-            <a href="#" class="video-channel-name">{{owner.userName}}</a>
+            {{!-- <a href="#" class="video-channel-name">{{owner.userName}}</a> --}}
             <div class="video-metadata">
                 {{!-- <span>12K views</span>
                 • --}}
@@ -19,18 +23,17 @@
             </div>
         </div>
         <div class="description">
-            <div class="description-item">
+           
                 <h5>Description</h5>
-            </div>
-            <div class="description-item">
+           
                 <p>{{description}}</p>
             </div>
         </div>
 
-    </div>
+    
 
 
-    <div >
+    <div class="comment-box">
         <form class="comments" action="{{_id}}/add-reviews" method="post">
             <label for="comment">Comment</label>
             <input type="text" name="comment" id="comment">
@@ -38,9 +41,10 @@
         </form>
     </div>
     
-    <div class="comments">
+    <div class="comments-section">
         {{#each reviews}}
         <div>
+            
             <p>{{comment}}</p>
         </div>
         

@@ -137,7 +137,9 @@ const uploadPostController = (req, res, next) => {
 };
 
 const videoPlayerGetController = (req, res, next) => {
-  Video.findById(req.params.id).populate('reviews')
+  Video.findById(req.params.id)
+  .populate('reviews')
+  .populate('owner')
   .then((foundVideo) => {
     console.log(foundVideo)
     res.render('videoplayer.hbs', foundVideo);
