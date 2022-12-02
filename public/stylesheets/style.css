@@ -269,6 +269,21 @@ body {
   margin-top: 1rem;
 }
 
+.video-home-bottom-section {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-item {
+  margin: 0;
+}
+
 .channel-icon {
   margin-right: .75rem;
   margin-top: .3rem;
@@ -279,6 +294,11 @@ body {
 }
 
 .video-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-home-details {
   display: flex;
   flex-direction: column;
 }

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Review = require('../models/Video.model');
+const Review = require('../models/review.model');
 
 const { isLoggedIn, isNotOwner  }= require('../middleware/auth.middlewares');
 
@@ -24,7 +24,7 @@ router.post('/:id/add-reviews', isLoggedIn, isNotOwner, (req, res, next) => {
             )
             .then((updatedVideo) => {
                 console.log('WTIH NEW REVIEW', updatedVideo)
-                res.redirect(`/videos-player/${req.params.id}`)
+                res.redirect(`/video-player/${req.params.id}`)
             })
             .catch((err) => {
                 console.log(err)
